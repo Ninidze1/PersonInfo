@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.AnimatedVectorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.service.autofill.Validators.not
@@ -8,6 +10,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.core.content.ContextCompat
+import com.airbnb.lottie.LottieAnimationView
 
 
 class MainActivity : AppCompatActivity() {
@@ -52,12 +55,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         clearButton.setOnLongClickListener {
-
             clear()
+            Toast.makeText(this, "ველები გასუფთავდა", Toast.LENGTH_SHORT).show()
             true
-
         }
-
     }
 
     private fun init() {
@@ -81,7 +82,6 @@ class MainActivity : AppCompatActivity() {
         ageCorrect = findViewById(R.id.ageCorrect)
         ageNotCorrect = findViewById(R.id.ageNotCorrect)
         userNotCorrect = findViewById(R.id.userNotCorrect)
-
     }
 
     private fun clear() {
@@ -139,6 +139,9 @@ class MainActivity : AppCompatActivity() {
             incorrectCount += 1
             val shake = AnimationUtils.loadAnimation(this, R.anim.shake)
             usernameEditText.startAnimation(shake)
+            userNotCorrect.startAnimation(shake)
+
+
 
         }
     }
@@ -162,6 +165,8 @@ class MainActivity : AppCompatActivity() {
             fNameNotCorrect.visibility = View.VISIBLE
 
             firstNameEditText.startAnimation(shake)
+            fNameNotCorrect.startAnimation(shake)
+
             firstNameEditText.setBackgroundResource(R.drawable.input_incorrect_shape)
             incorrectCount += 1
 
@@ -188,6 +193,8 @@ class MainActivity : AppCompatActivity() {
             lNameNotCorrect.visibility = View.VISIBLE
 
             lastNameEditText.startAnimation(shake)
+            lNameNotCorrect.startAnimation(shake)
+
             lastNameEditText.setBackgroundResource(R.drawable.input_incorrect_shape)
             incorrectCount += 1
         }
@@ -217,14 +224,14 @@ class MainActivity : AppCompatActivity() {
             incorrectCount += 1
             val shake = AnimationUtils.loadAnimation(this, R.anim.shake)
             emailEditText.startAnimation(shake)
+            eMailNotCorrect.startAnimation(shake)
         }
-
-
     }
 
     private fun ageCheck() {
 
-        if (ageEditText.text.isNotEmpty() && !(ageEditText.text.toString().contains(',')) && ageEditText.text.toString().toInt() >= 0) {
+        if (ageEditText.text.isNotEmpty() &&
+            ageEditText.text.toString().toInt() >= 0 && ageEditText.text.toString().toInt() < 120) {
 
             ageCorrect.visibility = View.INVISIBLE
             ageNotCorrect.visibility = View.INVISIBLE
@@ -233,16 +240,17 @@ class MainActivity : AppCompatActivity() {
             ageEditText.setBackgroundResource(R.drawable.input_correct_shape)
 
         } else {
-
             ageCorrect.visibility = View.INVISIBLE
             ageNotCorrect.visibility = View.INVISIBLE
 
             ageNotCorrect.visibility = View.VISIBLE
+            ageNotCorrect.tooltipText = "user must contain 10 characters or more"
             incorrectCount += 1
             ageEditText.setBackgroundResource(R.drawable.input_incorrect_shape)
 
             val shake = AnimationUtils.loadAnimation(this, R.anim.shake)
             ageEditText.startAnimation(shake)
+            ageNotCorrect.startAnimation(shake)
         }
     }
 
@@ -263,8 +271,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun generalCheck() {
-        if (incorrectCount > 1) {
-            Toast.makeText(this, "შეიყვანეთ მონაცემები სრულყოფილად", Toast.LENGTH_LONG).show()
+        if (incorrectCount >= 1) {
+            Toast.makeText(this, "მონაცემები არ არის შეყვანილი სრულყოფილად", Toast.LENGTH_SHORT).show()
         }
 
     }

@@ -6,7 +6,7 @@
     <string name="last_name">last name</string>
     <string name="age">age</string>
     <string name="email">Email</string>
-    <string name="clear">Clear</string>
     <string name="save">Save</string>
     <string name="profile_info">Profile Info</string>
+    <string name="clear">Clear</string>
 </resources>
