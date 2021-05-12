@@ -12,10 +12,6 @@ import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
-//    if (usernameEditText.text.toString() == "1") {
-//        val shake = AnimationUtils.loadAnimation(this, R.anim.shake)
-//        ageEditText.startAnimation(shake)
-
     private lateinit var textView: TextView
     private lateinit var clearButton: Button
     private lateinit var saveButton: Button
@@ -52,9 +48,6 @@ class MainActivity : AppCompatActivity() {
             nameCheck()
             lastNameCheck()
             generalCheck()
-
-            d("go", "$incorrectCount")
-            incorrectCount = 0
 
         }
 

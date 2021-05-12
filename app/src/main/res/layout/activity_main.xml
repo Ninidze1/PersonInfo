@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/ic_background"
     tools:context=".MainActivity">
 
     <TextView
@@ -16,9 +16,10 @@
         android:textColor="@color/white"
         android:textSize="27sp"
         app:layout_constraintBottom_toTopOf="@id/usernameEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@id/startGuidLine"
+        app:layout_constraintTop_toTopOf="@id/topGuidLine"
         app:layout_constraintVertical_bias="0.3"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -114,7 +115,7 @@
         android:paddingEnd="14dp"
         android:paddingBottom="14dp"
         android:textColorHint="@color/gray"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomGuideLine"
         app:layout_constraintEnd_toEndOf="@+id/saveButton"
         app:layout_constraintStart_toStartOf="@+id/clearButton"
         app:layout_constraintTop_toBottomOf="@+id/lastNameEditText" />
@@ -123,36 +124,36 @@
         android:id="@+id/clearButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_shape"
         android:backgroundTint="@color/main_color"
         android:fontFamily="@font/proxima_black"
         android:text="@string/clear"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/bottomGuideLine"
         app:layout_constraintEnd_toStartOf="@+id/saveButton"
         app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/startGuidLine"
         app:layout_constraintTop_toBottomOf="@+id/ageEditText"
-        app:layout_constraintVertical_bias="0.324" />
+        app:layout_constraintVertical_bias="0.043" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/button_shape"
         android:backgroundTint="@color/main_color"
         android:fontFamily="@font/proxima_black"
         android:text="@string/save"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/bottomGuideLine"
+        app:layout_constraintEnd_toEndOf="@id/endGuideLine"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintStart_toEndOf="@id/clearButton"
         app:layout_constraintTop_toBottomOf="@+id/ageEditText"
-        app:layout_constraintVertical_bias="0.323" />
+        app:layout_constraintVertical_bias="0.043" />
 
     <ImageView
         android:id="@+id/eMailCorrect"
@@ -285,5 +286,33 @@
         app:layout_constraintEnd_toEndOf="@+id/firstNameEditText"
         app:layout_constraintTop_toTopOf="@+id/firstNameEditText"
         app:srcCompat="@drawable/ic_round_close_24" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuidLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="31dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="17dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="25dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startGuidLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="25dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
